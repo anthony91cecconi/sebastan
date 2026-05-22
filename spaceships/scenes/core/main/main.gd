@@ -40,7 +40,8 @@ func _on_request_completed(result, response_code, headers, body):
 			
 			var latest_version = response["latest_version"]
 			download_url = response["download_url"]
-			
+			D.focus(str(latest_version))
+			D.focus(str(CURRENT_VERSION))
 			if latest_version != CURRENT_VERSION:
 				_avvia_download_automatico()
 			else:

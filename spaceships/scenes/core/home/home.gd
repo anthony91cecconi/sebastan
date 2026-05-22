@@ -48,3 +48,7 @@ func _crea_scheda(server: Dictionary):
 	vbox.add_child(giocatori)
 	panel.add_child(vbox)
 	server_list.add_child(panel)
+
+
+func _on_reload_pressed() -> void:
+	http_request.request(GATEWAY_URL)

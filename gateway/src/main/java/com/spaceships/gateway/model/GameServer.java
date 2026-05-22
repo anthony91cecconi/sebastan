@@ -15,6 +15,7 @@ public class GameServer {
     private String name;
     private String ip;
     private int port;
+    private int pingport;
     private int currentPlayers;
     private int maxPlayers;
     private Instant registeredAt;
@@ -29,6 +30,7 @@ public class GameServer {
         this.maxPlayers = maxPlayers;
         this.registeredAt = Instant.now();
         this.lastHeartbeat = Instant.now();
+        this.pingport = pingport;
     }
 
     public void aggiornaHeartbeat() {
