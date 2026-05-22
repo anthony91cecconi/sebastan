@@ -1,16 +1,35 @@
 [gd_scene format=3 uid="uid://dbv6q0vatlrp"]
 
+[ext_resource type="Script" uid="uid://bajiex4edon2o" path="res://scenes/core/home/home.gd" id="1_1chpt"]
+
 [node name="Home" type="CanvasLayer" unique_id=19278350]
+script = ExtResource("1_1chpt")
 
 [node name="Label" type="Label" parent="." unique_id=1661119533]
 anchors_preset = -1
-anchor_left = 0.47100002
-anchor_top = 0.34600002
-anchor_right = 0.50600004
-anchor_bottom = 0.381
-offset_left = 0.40795898
-offset_top = -0.20800781
-offset_right = 0.08795166
-offset_bottom = 0.11199951
+anchor_left = 0.24800001
+anchor_top = 0.105000004
+anchor_right = 0.287
+anchor_bottom = 0.14
+offset_left = 0.3039856
+offset_top = -0.040000916
+offset_right = 0.37600708
+offset_bottom = 0.27999878
 size_flags_horizontal = 4
 text = "home"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=2001356749]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1001515429]
+anchors_preset = -1
+anchor_left = 0.637
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.8240356
+offset_top = 2.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1616852250]
+layout_mode = 2

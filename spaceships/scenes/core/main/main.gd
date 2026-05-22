@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 # La versione attuale di questo specifico APK installato
-const CURRENT_VERSION = "0.0.1"
+const CURRENT_VERSION = "0.0.2"
 const VERSION_CHECK_URL = "https://raw.githubusercontent.com/anthony91cecconi/spaceships/refs/heads/main/version.json"
 
 @onready var http_request = $HTTPRequest
@@ -77,7 +77,4 @@ func _avvia_download_automatico():
 		sta_scaricando = false
 
 func _avvia_gioco_normale():
-	# Inserisci qui il codice per far partire il tuo gioco 
-	# Ad esempio il cambio scena verso il menu principale:
-	# get_tree().change_scene_to_file("res://MenuPrincipale.tscn")
-	pass
+	get_tree().change_scene_to_file("res://scenes/core/home/home.tscn")
