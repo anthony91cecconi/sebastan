@@ -3,6 +3,8 @@ FROM ubuntu:22.04
 RUN apt-get update && apt-get install -y \
     libgles2 \
     libfontconfig1 \
+    libfontconfig \
+    fonts-dejavu \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
