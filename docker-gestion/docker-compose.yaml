@@ -18,5 +18,3 @@ services:
     container_name: spaceships-server
     restart: always
     network_mode: host
-    depends_on:
-      - spaceships-gateway
