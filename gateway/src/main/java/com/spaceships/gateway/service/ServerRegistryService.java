@@ -90,6 +90,7 @@ public class ServerRegistryService {
     private boolean pingServer(GameServer server) {
         try {
             String urlStr = "http://" + server.getIp() + ":" + server.getPingport() + "/ping";
+            log.info("sto pingando questo:\n "+urlStr);
             HttpURLConnection conn = (HttpURLConnection) new URL(urlStr).openConnection();
             conn.setConnectTimeout(5000);
             conn.setReadTimeout(5000);
