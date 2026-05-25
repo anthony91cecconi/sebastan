@@ -22,18 +22,46 @@ text = "home"
 
 [node name="ScrollServerContainer" type="ScrollContainer" parent="." unique_id=1001515429]
 anchors_preset = -1
-anchor_left = 0.63500005
+anchor_left = 0.5
 anchor_top = 0.091000006
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -0.52008057
-offset_top = 0.03199768
-offset_right = 3.0
+offset_left = 1.0
+offset_top = 4.0319977
+offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ServerList" type="VBoxContainer" parent="ScrollServerContainer" unique_id=1616852250]
+[node name="Control" type="Control" parent="ScrollServerContainer" unique_id=705340342]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="ScrollServerContainer/Control" unique_id=1488560117]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.47900003
+anchor_right = 1.0
+anchor_bottom = 0.85
+offset_left = 0.053985596
+offset_bottom = -0.25
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4390491, 0.43904912, 0.43904912, 1)
+
+[node name="ServerList" type="VBoxContainer" parent="ScrollServerContainer/Control" unique_id=1616852250]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48600003
+anchor_right = 1.0
+anchor_bottom = 0.84400004
+offset_left = 0.035980225
+offset_top = -114.5
+offset_right = -2.0
+offset_bottom = 115.75998
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
 [node name="ServerLabel" type="Label" parent="." unique_id=1234381686]
 anchors_preset = -1

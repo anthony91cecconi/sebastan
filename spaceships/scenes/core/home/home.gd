@@ -3,8 +3,11 @@ extends CanvasLayer
 const GATEWAY_URL = "http://93.38.52.145:8090/servers"
 
 @onready var http_request = $HTTPRequest
-@onready var server_list = $ScrollServerContainer/ServerList
+@onready var server_list = $ScrollServerContainer/Control/ServerList
 @onready var info_label = $ServerLabel
+
+const SERVER_UI_SCENE = preload("res://scenes/core/home/assets/components/server/server.tscn")
+
 
 func _ready():
 	info_label.text = "Ricerca server in corso..."
@@ -31,23 +34,14 @@ func _on_request_completed(result, response_code, headers, body):
 		_crea_scheda(server)
 
 func _crea_scheda(server: Dictionary):
-	var panel = PanelContainer.new()
-	var vbox = VBoxContainer.new()
+	# 1. Istanzia la scena della scheda
+	var scheda = SERVER_UI_SCENE.instantiate() as ServerUI
 	
-	var nome = Label.new()
-	nome.text = server["name"]
+	# 2. Passa i dati del server alla scheda tramite la funzione che abbiamo creato prima
+	scheda.setup(server)
 	
-	var indirizzo = Label.new()
-	indirizzo.text = server["ip"] + ":" + str(server["port"])
-	
-	var giocatori = Label.new()
-	giocatori.text = "Giocatori: " + str(server["currentPlayers"]) + "/" + str(server["maxPlayers"])
-	
-	vbox.add_child(nome)
-	vbox.add_child(indirizzo)
-	vbox.add_child(giocatori)
-	panel.add_child(vbox)
-	server_list.add_child(panel)
+	# 3. Aggiungi la scheda direttamente come figlia del tuo container della lista
+	server_list.add_child(scheda)
 
 
 func _on_reload_pressed() -> void:
