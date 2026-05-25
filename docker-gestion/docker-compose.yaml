@@ -7,8 +7,11 @@ services:
     container_name: spaceships-gateway
     restart: always
     network_mode: host
+    environment:
+      - VERSION_JSON_PATH=/config/version.json
     volumes:
       - /home/cecconi/spaceships/relises:/relises
+      - /home/cecconi/spaceships/version.json:/config/version.json:ro
 
   spaceships-server:
     image: localhost/spaceships-server:latest

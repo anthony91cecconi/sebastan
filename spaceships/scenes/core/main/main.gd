@@ -32,6 +32,10 @@ func _process(_delta):
 
 func _on_request_completed(result, response_code, headers, body):
 	if not sta_scaricando:
+		info_label.text = "tentativo di dowload avviato"
+		await get_tree().create_timer(1.0).timeout
+		info_label.text = "response_code = " + str(response_code)
+		await get_tree().create_timer(1.0).timeout
 		if response_code == 200:
 			var json = JSON.new()
 			json.parse(body.get_string_from_utf8())

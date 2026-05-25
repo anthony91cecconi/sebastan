@@ -6,6 +6,7 @@ import com.spaceships.gateway.model.RegisterRequest;
 import com.spaceships.gateway.service.ServerRegistryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -24,10 +25,13 @@ import java.util.Map;
 public class GatewayController {
 
     private static final Logger log = LoggerFactory.getLogger(GatewayController.class);
-    private final String JSON_PATH = "/home/cecconi/spaceships/version.json";
     private final ObjectMapper objectMapper = new ObjectMapper();
-
     private final ServerRegistryService registryService;
+
+    // Prende il percorso dalla variabile d'ambiente 'VERSION_JSON_PATH'.
+    // Se non passata, usa il valore di default dopo i due punti.
+    @Value("${version.json.path:/config/version.json}")
+    private String jsonPath;
 
     public GatewayController(ServerRegistryService registryService) {
         this.registryService = registryService;
@@ -52,18 +56,22 @@ public class GatewayController {
     @GetMapping("/version")
     public ResponseEntity<?> getVersion() {
         try {
-            File jsonFile = new File(JSON_PATH);
+            File jsonFile = new File(jsonPath);
             
-            // Legge il file e lo mappa direttamente come Map<String, String>
+            if (!jsonFile.exists()) {
+                log.error("Il file delle versioni non esiste al percorso: {}", jsonPath);
+                return ResponseEntity.status(404).body(Map.of("error", "File version.json non trovato nel container."));
+            }
+
             @SuppressWarnings("unchecked")
             Map<String, String> versionData = objectMapper.readValue(jsonFile, Map.class);
-            
             return ResponseEntity.ok(versionData);
             
         } catch (IOException e) {
-            // Se il file non esiste o è corrotto, eviti il crash del server
+            log.error("Errore durante la lettura del file JSON della versione: ", e);
             return ResponseEntity.status(500).body(Map.of(
-                "error", "Impossibile leggere il file di configurazione delle versioni."
+                "error", "Impossibile leggere il file di configurazione delle versioni.",
+                "details", e.getMessage()
             ));
         }
     }
