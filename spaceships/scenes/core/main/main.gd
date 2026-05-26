@@ -15,7 +15,7 @@ var is_downloading = false
 var using_github = false
 
 func _ready():
-	_start_normal_game()
+	#_start_normal_game()
 	progress_bar.visible = false
 	ignore_button.visible = false
 	upgrade_button.visible = false
