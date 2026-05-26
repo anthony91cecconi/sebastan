@@ -5,6 +5,7 @@ const GATEWAY_URL = "http://93.38.52.145:8090/servers"
 @onready var http_request = $HTTPRequest
 @onready var server_list = $ScrollServerContainer/Control/ServerList
 @onready var info_label = $ServerLabel
+@onready var test_button = $TestButton
 
 const SERVER_UI_SCENE = preload("res://scenes/core/home/assets/components/server/server.tscn")
 
@@ -48,3 +49,7 @@ func _on_reload_pressed() -> void:
 	for child in server_list.get_children():
 		child.queue_free()
 	http_request.request(GATEWAY_URL)
+
+
+func _on_test_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://areatest/solar_system/solar_system.tscn")

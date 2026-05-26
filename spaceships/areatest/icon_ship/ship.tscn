@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cvxoapresqf8d"]
+
+[ext_resource type="Script" uid="uid://1681usqfx7yv" path="res://areatest/icon_ship/ship.gd" id="1_f5w3u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v6oxs"]
+radius = 2.0
+
+[node name="Ship" type="CharacterBody2D" unique_id=1651888997]
+input_pickable = true
+script = ExtResource("1_f5w3u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1718131158]
+shape = SubResource("CircleShape2D_v6oxs")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=812203392]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+
+[node name="Control" type="Control" parent="." unique_id=1357660672]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Navigate" type="Button" parent="Control" unique_id=1093298290]
+layout_mode = 0
+offset_top = -40.0
+offset_right = 59.0
+offset_bottom = -9.0
+text = "naviga"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=31281156]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1408422736]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=565114602]
+shape = SubResource("CircleShape2D_v6oxs")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
