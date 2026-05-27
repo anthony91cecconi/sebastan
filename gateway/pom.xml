@@ -11,11 +11,11 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.spaceships</groupId>
+    <groupId>com.rapid</groupId>
     <artifactId>gateway</artifactId>
     <version>0.0.1</version>
     <name>gateway</name>
-    <description>Spaceships MMO - Gateway Server</description>
+    <description>rapid - Gateway Server</description>
 
     <properties>
         <java.version>21</java.version>

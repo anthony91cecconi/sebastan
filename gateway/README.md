@@ -1,6 +1,6 @@
-# Spaceships Gateway
+# rapid Gateway
 
-Servizio gateway per il bilanciamento e la discovery dei game server dell'MMO Spaceships.
+Servizio gateway per il bilanciamento e la discovery dei game server dell'MMO rapid.
 
 ## Funzionamento
 
@@ -55,15 +55,15 @@ Risposta senza server attivi:
 
 ### 2. Build dell'immagine
 ```bash
-podman build -t spaceships-gateway .
+podman build -t rapid-gateway .
 ```
 
 ### 3. Avvio del container
 ```bash
 podman run -d \
-  --name spaceships-gateway \
+  --name rapid-gateway \
   -p 8080:8080 \
-  spaceships-gateway
+  rapid-gateway
 ```
 
 ### 4. Verifica

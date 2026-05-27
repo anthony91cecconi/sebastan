@@ -2,19 +2,19 @@ version: "3.8"
 
 services:
 
-  spaceships-gateway:
-    image: localhost/spaceships-gateway:latest
-    container_name: spaceships-gateway
+  rapid-gateway:
+    image: localhost/rapid-gateway:latest
+    container_name: rapid-gateway
     restart: always
     network_mode: host
     environment:
       - VERSION_JSON_PATH=/config/version.json
     volumes:
-      - /home/cecconi/spaceships/relises:/relises
-      - /home/cecconi/spaceships:/config:ro
+      - /home/cecconi/rapid/relises:/relises
+      - /home/cecconi/rapid:/config:ro
 
-  spaceships-server:
-    image: localhost/spaceships-server:latest
-    container_name: spaceships-server
+  rapid-server:
+    image: localhost/rapid-server:latest
+    container_name: rapid-server
     restart: always
     network_mode: host
