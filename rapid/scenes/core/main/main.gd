@@ -112,6 +112,9 @@ func _start_automatic_download():
 	progress_bar.value = 0
 	info_label.text = "Download in corso..."
 	
+	# Disabiliamo il timeout durante il download — il file è grande
+	http_request.timeout = 0.0
+	
 	var download_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS)
 	var save_path = download_dir + "/rapid_update.apk"
 	http_request.set_download_file(save_path)
@@ -121,6 +124,7 @@ func _start_automatic_download():
 	if error != OK:
 		info_label.text = "Errore nell'avviare il download."
 		is_downloading = false
+		progress_bar.visible = false
 		ignore_button.visible = true
 
 func _start_normal_game():
