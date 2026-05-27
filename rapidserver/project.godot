@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 D="*uid://yvl4gu5ixfoc"
+GatewayClient="*uid://cxib3frq7310e"
+Network="*uid://b8va2gnnaga7w"
 
 [physics]
 
